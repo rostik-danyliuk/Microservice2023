@@ -14,34 +14,39 @@ import java.util.List;
 @Tag(name = "Teacher Controller",
 description = "CRUD operation")
 public class TeacherRestController {
-    @Autowired
-    TeacherService teacherService;
 
-    @Operation(summary = "Пошук одного викладача")
+    private final TeacherService teacherService;
+
+    @Autowired
+    public TeacherRestController(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
+
+    @Operation(summary = "Search for one teacher")
     @GetMapping("/{id}")
     Teacher getOne(@PathVariable String id){
         return teacherService.getOne(id);
     }
 
-    @Operation(summary = "Пошук всіх викладачів")
+    @Operation(summary = "Search all teachers")
     @GetMapping("/")
     List<Teacher> getAll(){
         return teacherService.getAll();
     }
 
-    @Operation(summary = "Додавання одного викладача")
+    @Operation(summary = "Adding one teacher")
     @PostMapping("/")
     Teacher create(@RequestBody Teacher teacher){
         return teacherService.create(teacher);
     }
 
-    @Operation(summary = "Оновлення інформації про викладача")
+    @Operation(summary = "Updating information about the teacher")
     @PutMapping("/")
     Teacher update(@RequestBody Teacher teacher){
         return teacherService.update(teacher);
     }
 
-    @Operation(summary = "Видалення викладача з бази даних")
+    @Operation(summary = "Removing the teacher from the database")
     @DeleteMapping("/{id}")
     void delete(@PathVariable String id){
         teacherService.delete(id);

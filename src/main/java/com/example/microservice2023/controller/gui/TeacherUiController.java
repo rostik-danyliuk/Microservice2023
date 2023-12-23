@@ -12,8 +12,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/ui/v1/teachers")
 public class TeacherUiController {
+
+    private final TeacherService teacherService;
+
     @Autowired
-    TeacherService teacherService;
+    public TeacherUiController(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
 
     @RequestMapping("/")
     String showAll(Model model){
