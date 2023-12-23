@@ -1,7 +1,9 @@
 package com.example.microservice2023.model;
 
 import com.example.microservice2023.model.enums.Position;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -13,10 +15,18 @@ import java.util.Objects;
 @Setter
 @Document
 @Builder
+@Schema(name = "Teacher", description = "Поля для викладача")
 public class Teacher {
+    @Id
+    @Schema(name = "ID",
+            description = "унікальний ідентифікатор",
+            accessMode = Schema.AccessMode.READ_ONLY)
     private String id;
+    @Schema(name = "People", description = "Повна інформація про людину")
     private People people;
+    @Schema(name = "Position", description = "Посада викладача")
     private Position position;
+    @Schema(name = "Experience", description = "Досвід роботи викладачем")
     private Integer experience;
     private String description;
     private LocalDateTime createdAt;
