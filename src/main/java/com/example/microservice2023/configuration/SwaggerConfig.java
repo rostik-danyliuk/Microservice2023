@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.context.annotation.Configuration;
 
+@SuppressWarnings("checkstyle:MissingJavadocType")
 @OpenAPIDefinition(
         info = @Info(title = "Docs for Microservices",
                 description = "SwaggerConfig file",

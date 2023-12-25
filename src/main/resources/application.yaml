@@ -3,6 +3,16 @@ spring:
     mongodb:
       database: Teachers
       host: localhost
-      port: 27017
+      port: 27018
   freemarker:
     suffix: .ftl
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
